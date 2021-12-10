@@ -1,11 +1,13 @@
 function arrayToList(arr){
-    console.log(arr);
-    let list = {};
-    for(i=0; i<arr.length; i++){
-       list.value = arr[i];
-       list.rest = null;
-    }
-    return list;
+  console.log(arr);
+  let list = null;
+  for(i=arr.length-1; i>=0; i--){
+      list = {
+          value: arr[i],
+          rest: list
+        }
+  }
+  return list;
 };      
 
 
@@ -23,10 +25,10 @@ describe("A list exercise", ()=>{
           });
     });
 
-    it.only("must convert [50] array to a list object", ()=>{
+    it("must convert [50] array to a list object", ()=>{
         expect(arrayToList([50])).toEqual({
             value: 50,
             rest: null
-        });
+        }); 
     });
 });
